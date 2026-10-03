@@ -1,0 +1,23 @@
+name: Hello World
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  hello:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Say hello
+        run: echo "Hello, GitHub Actions!"
+
+      - name: Print some context information
+        env:
+          REPO: \${{ github.repository }}
+          BRANCH: \${{ github.ref_name }}
+          AUTHOR: \${{ github.actor }}
+        run: |
+          echo "Repository: $REPO"
+          echo "Branch: $BRANCH"
+          echo "Commit author: $AUTHOR"
